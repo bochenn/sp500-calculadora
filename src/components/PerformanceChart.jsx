@@ -21,8 +21,8 @@ export default function PerformanceChart({ returns, color = '#00D632', name = 'S
   const investYear = returns[0].year
 
   return (
-    <div>
-      <div className="text-center mb-5">
+    <div className="h-full flex flex-col">
+      <div className="text-center mb-4">
         <p className="text-[16px] font-semibold text-black">
           $1 invertido en {investYear} valdría ${finalValue.toFixed(2)} hoy
         </p>
@@ -32,13 +32,13 @@ export default function PerformanceChart({ returns, color = '#00D632', name = 'S
       </div>
 
       <div
-        className="w-full rounded-2xl overflow-hidden"
+        className="flex-1 min-h-0 rounded-2xl overflow-hidden"
         style={{
           backgroundImage: 'radial-gradient(circle, #E8E8E8 1px, transparent 1px)',
           backgroundSize: '20px 20px',
         }}
       >
-        <ResponsiveContainer width="100%" height={210}>
+        <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ top: 28, right: 12, left: -16, bottom: 0 }}>
             <defs>
               <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">

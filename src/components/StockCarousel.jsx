@@ -32,66 +32,69 @@ export default function StockCarousel({ selectedStockKey, onStockChange, onScrol
   })
 
   return (
-    <section className="w-full bg-[#F5F5F5] py-20 sm:py-28">
-      <div className="max-w-[1040px] mx-auto px-8 sm:px-12 text-center">
+    <section
+      className="w-full bg-[#F5F5F5] flex flex-col min-h-screen sm:max-h-screen pt-8 sm:pt-10 pb-6 sm:pb-8"
+    >
+      <div className="max-w-[1040px] w-full mx-auto px-8 sm:px-12 text-center flex flex-col flex-1 justify-between">
 
-        {/* Logo — negro sólido via brightness-0 */}
-        <img
-          src={logo}
-          alt="Cash App"
-          className="w-12 h-12 brightness-0 mx-auto mb-14"
-        />
-
-        {/* Contenido dinámico — fadeSlideUp al cambiar de activo */}
-        <div key={selectedStockKey} className="animate-fadeSlideUp">
-          <h1 className="text-[40px] sm:text-[64px] font-extrabold text-black
-            tracking-[-0.02em] leading-[1.05] mb-4">
-            Invertir en {asset.name}
-          </h1>
-          <p className="text-[16px] sm:text-[18px] text-[#6B7280] leading-relaxed max-w-[520px] mx-auto">
-            {asset.subtitle}
-          </p>
-
-          <div className="mt-10">
-            <p className="text-[11px] font-semibold text-[#8E8E93] uppercase tracking-[0.08em] mb-5">
-              Rendimiento acumulado 2016–2025
+        {/* Zona superior: logo + título + subtítulo */}
+        <div>
+          <img
+            src={logo}
+            alt="Cash App"
+            className="w-12 h-12 brightness-0 mx-auto mb-6"
+          />
+          <div key={selectedStockKey} className="animate-fadeSlideUp">
+            <h1 className="text-[32px] sm:text-[52px] font-extrabold text-black
+              tracking-[-0.02em] leading-[1.05] mb-3">
+              Invertir en {asset.name}
+            </h1>
+            <p className="text-[16px] sm:text-[18px] text-[#6B7280] leading-relaxed max-w-[520px] mx-auto">
+              {asset.subtitle}
             </p>
-            <PerformanceChart
-              returns={asset.returns}
-              color={asset.color}
-              name={asset.name}
-            />
           </div>
         </div>
 
-        {/* Selector de activos — fila única con scroll horizontal */}
-        <div className="relative mt-10">
-          {/* Fade izquierdo */}
-          <div className="absolute left-0 top-0 h-full w-12 pointer-events-none z-10"
-            style={{ background: 'linear-gradient(to right, #F5F5F5, transparent)' }} />
-          {/* Fade derecho */}
-          <div className="absolute right-0 top-0 h-full w-12 pointer-events-none z-10"
-            style={{ background: 'linear-gradient(to left, #F5F5F5, transparent)' }} />
-
-          <div
-            className="flex gap-2 overflow-x-auto py-1 px-1"
-            style={{
-              flexWrap: 'nowrap',
-              scrollSnapType: 'x mandatory',
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              WebkitOverflowScrolling: 'touch',
-            }}
-          >
-            {tabs}
-          </div>
+        {/* Zona central: chart — ocupa el espacio disponible */}
+        <div
+          className="flex-1 min-h-0"
+          style={{ minHeight: '200px', maxHeight: '360px' }}
+        >
+          <PerformanceChart
+            returns={asset.returns}
+            color={asset.color}
+            name={asset.name}
+          />
         </div>
 
-        {/* CTA */}
-        <div className="max-w-[300px] mx-auto mt-10">
-          <Button onClick={onScrollToCalculator}>
-            Calcular tu inversión y retorno
-          </Button>
+        {/* Zona inferior: carousel + CTA */}
+        <div>
+          <div className="relative">
+            {/* Fades laterales */}
+            <div className="absolute left-0 top-0 h-full w-12 pointer-events-none z-10"
+              style={{ background: 'linear-gradient(to right, #F5F5F5, transparent)' }} />
+            <div className="absolute right-0 top-0 h-full w-12 pointer-events-none z-10"
+              style={{ background: 'linear-gradient(to left, #F5F5F5, transparent)' }} />
+
+            <div
+              className="flex gap-2 overflow-x-auto py-1 px-1"
+              style={{
+                flexWrap: 'nowrap',
+                scrollSnapType: 'x mandatory',
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {tabs}
+            </div>
+          </div>
+
+          <div className="max-w-[300px] mx-auto mt-4">
+            <Button onClick={onScrollToCalculator}>
+              Calcular tu inversión y retorno
+            </Button>
+          </div>
         </div>
 
       </div>
