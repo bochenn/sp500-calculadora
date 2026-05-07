@@ -1,11 +1,13 @@
 // Retornos anuales aproximados (fuente: Yahoo Finance / Google Finance).
 // Actualizables con datos exactos si se requiere mayor precisión.
+// expected2026Rate: consenso de analistas para el año fiscal 2026 (estimación, no garantía).
 export const ASSETS = {
   SP500: {
     name: 'S&P 500',
     ticker: 'SP500',
     color: '#00D632',
     minRate: 7.0,
+    expected2026Rate: 9,
     subtitle: 'Índice que agrupa las 500 empresas más grandes de EE.UU. El benchmark de la inversión pasiva.',
     returns: [
       { year: 2016, return: 12.0 },
@@ -25,6 +27,7 @@ export const ASSETS = {
     ticker: 'AAPL',
     color: '#555555',
     minRate: 8.0,
+    expected2026Rate: 12,
     subtitle: 'La empresa más valiosa del mundo. iPhone, Mac y servicios con crecimiento global sostenido.',
     returns: [
       { year: 2016, return: 12.5 },
@@ -44,6 +47,7 @@ export const ASSETS = {
     ticker: 'MSFT',
     color: '#0078D4',
     minRate: 9.0,
+    expected2026Rate: 15,
     subtitle: 'Gigante del software y la nube. Azure, Office y Copilot impulsan su expansión global.',
     returns: [
       { year: 2016, return: 15.8 },
@@ -63,6 +67,7 @@ export const ASSETS = {
     ticker: 'TSLA',
     color: '#CC0000',
     minRate: 5.0,
+    expected2026Rate: 20,
     subtitle: 'Pionero en vehículos eléctricos y energía limpia. Alta volatilidad, alto potencial de retorno.',
     returns: [
       { year: 2016, return: 6.9 },
@@ -82,6 +87,7 @@ export const ASSETS = {
     ticker: 'GOOGL',
     color: '#4285F4',
     minRate: 7.0,
+    expected2026Rate: 16,
     subtitle: 'La empresa detrás de Google, YouTube y Cloud. Dominio global en búsqueda y publicidad digital.',
     returns: [
       { year: 2016, return: 2.0 },
@@ -101,6 +107,7 @@ export const ASSETS = {
     ticker: 'NVDA',
     color: '#76B900',
     minRate: 10.0,
+    expected2026Rate: 22,
     subtitle: 'Líder global en GPUs y la revolución de la inteligencia artificial.',
     returns: [
       { year: 2016, return: 224.0 },
@@ -120,6 +127,7 @@ export const ASSETS = {
     ticker: 'AMZN',
     color: '#FF9900',
     minRate: 8.0,
+    expected2026Rate: 14,
     subtitle: 'E-commerce global y AWS, la nube más grande del mundo. Dos negocios líderes en uno.',
     returns: [
       { year: 2016, return: 10.9 },
@@ -139,6 +147,7 @@ export const ASSETS = {
     ticker: 'META',
     color: '#0081FB',
     minRate: 6.0,
+    expected2026Rate: 12,
     subtitle: 'Dueño de Instagram, WhatsApp y Facebook. Apuesta fuerte por IA y realidad aumentada.',
     returns: [
       { year: 2016, return: 9.9 },
@@ -158,6 +167,7 @@ export const ASSETS = {
     ticker: 'NFLX',
     color: '#E50914',
     minRate: 6.0,
+    expected2026Rate: 10,
     subtitle: 'Pionero del streaming y líder global en producción de contenido original.',
     returns: [
       { year: 2016, return: 8.2 },
@@ -177,6 +187,7 @@ export const ASSETS = {
     ticker: 'BRK.B',
     color: '#0033A0',
     minRate: 6.0,
+    expected2026Rate: 9,
     subtitle: 'El conglomerado de Warren Buffett. Inversión value con décadas de retornos consistentes.',
     returns: [
       { year: 2016, return: 22.6 },
@@ -188,6 +199,26 @@ export const ASSETS = {
       { year: 2022, return: 4.0 },
       { year: 2023, return: 15.8 },
       { year: 2024, return: 27.1 },
+      { year: 2025, return: 10.0 },
+    ],
+  },
+  BAYN: {
+    name: 'Bayer',
+    ticker: 'BAYN',
+    color: '#10384F',
+    minRate: 3.0,
+    expected2026Rate: 10,
+    subtitle: 'Farmacéutica y agroquímica alemana. Caso de estudio: el peso de los litigios por Monsanto.',
+    returns: [
+      { year: 2016, return: -15.0 },
+      { year: 2017, return: -8.4 },
+      { year: 2018, return: -37.2 },
+      { year: 2019, return: -14.0 },
+      { year: 2020, return: -29.7 },
+      { year: 2021, return: 14.0 },
+      { year: 2022, return: -3.5 },
+      { year: 2023, return: -36.5 },
+      { year: 2024, return: -42.6 },
       { year: 2025, return: 10.0 },
     ],
   },

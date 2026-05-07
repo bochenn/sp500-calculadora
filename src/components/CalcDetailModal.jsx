@@ -16,6 +16,7 @@ function getModeLabel(mode) {
   if (mode === 'MIN') return 'MIN'
   if (mode === 'AVG') return 'AVG'
   if (mode === 'MAX') return 'MAX'
+  if (mode === 'EXPECTED_2026') return '2026'
   return 'Manual'
 }
 

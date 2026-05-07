@@ -60,17 +60,12 @@ export default function StockCarousel({ selectedStockKey, onStockChange, onScrol
           </div>
         </div>
 
-        {/* Selector de activos — debajo del contenido */}
-        {/* Desktop + tablet: flex-wrap */}
-        <div className="hidden sm:flex flex-wrap justify-center gap-2 mt-10">
-          {tabs}
-        </div>
-        {/* Mobile: scroll horizontal sin scrollbar visible */}
+        {/* Selector de activos — scroll horizontal en todos los tamaños */}
         <div
-          className="sm:hidden flex overflow-x-auto gap-2 mt-10 pb-1"
+          className="flex overflow-x-auto gap-2 mt-10 pb-1"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
-          <div className="flex gap-2 px-1 mx-auto">
+          <div className="flex gap-2 flex-nowrap mx-auto">
             {tabs}
           </div>
         </div>

@@ -25,6 +25,7 @@ export default function CalculatorSection({ sectionRef, onSaved, preload, select
   const minRate = asset.minRate
   const avgRate = useMemo(() => computeAvgRate(asset.returns), [asset])
   const maxRate = useMemo(() => computeMaxRate(asset.returns), [asset])
+  const expected2026Rate = asset.expected2026Rate
 
   // Pre-popula el formulario cuando App pasa un cálculo guardado
   useEffect(() => {
@@ -80,9 +81,10 @@ export default function CalculatorSection({ sectionRef, onSaved, preload, select
     if (rateMode === 'MIN') return minRate
     if (rateMode === 'AVG') return avgRate
     if (rateMode === 'MAX') return maxRate
+    if (rateMode === 'EXPECTED_2026') return expected2026Rate
     if (rateMode === 'MANUAL') return parseFloat(manualRate) || null
     return null
-  }, [rateMode, manualRate, minRate, avgRate, maxRate])
+  }, [rateMode, manualRate, minRate, avgRate, maxRate, expected2026Rate])
 
   const yearsNum = effectiveYears || 0
   const rateNum = effectiveRate || 0
@@ -91,6 +93,7 @@ export default function CalculatorSection({ sectionRef, onSaved, preload, select
     (isNaN(yearsNum) || yearsNum < 1 || yearsNum > 50) ? 'Entre 1 y 50 años' : null
 
   const rateNegativaOCero = rateMode === 'MANUAL' && manualRate !== '' && rateNum <= 0
+  const ratePresetNegativa = rateMode !== 'MANUAL' && rateMode !== null && effectiveRate !== null && effectiveRate <= 0
 
   const resultado = useMemo(() => {
     if (targetAmount <= 0 || yearsNum < 1 || yearsNum > 50 || rateNum <= 0) return null
@@ -192,23 +195,29 @@ export default function CalculatorSection({ sectionRef, onSaved, preload, select
             <h3 className="text-[13px] font-semibold text-black mb-2 uppercase tracking-wide">
               Tasa Anual Esperada
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
               <SelectorButton selected={rateMode === 'MIN'} onClick={() => handleRateMode('MIN')}>
                 <span className="text-center leading-snug">
                   <span className="block text-[12px] font-bold">MIN</span>
-                  <span className="block text-[11px] text-[#8E8E93]">{formatRateDisplay(minRate)}</span>
+                  <span className={`block text-[11px] ${minRate < 0 ? 'text-[#FF3B30]' : 'text-[#8E8E93]'}`}>{formatRateDisplay(minRate)}</span>
                 </span>
               </SelectorButton>
               <SelectorButton selected={rateMode === 'AVG'} onClick={() => handleRateMode('AVG')}>
                 <span className="text-center leading-snug">
                   <span className="block text-[12px] font-bold">AVG</span>
-                  <span className="block text-[11px] text-[#8E8E93]">{formatRateDisplay(avgRate)}</span>
+                  <span className={`block text-[11px] ${avgRate < 0 ? 'text-[#FF3B30]' : 'text-[#8E8E93]'}`}>{formatRateDisplay(avgRate)}</span>
                 </span>
               </SelectorButton>
               <SelectorButton selected={rateMode === 'MAX'} onClick={() => handleRateMode('MAX')}>
                 <span className="text-center leading-snug">
                   <span className="block text-[12px] font-bold">MAX</span>
-                  <span className="block text-[11px] text-[#8E8E93]">{formatRateDisplay(maxRate)}</span>
+                  <span className={`block text-[11px] ${maxRate < 0 ? 'text-[#FF3B30]' : 'text-[#8E8E93]'}`}>{formatRateDisplay(maxRate)}</span>
+                </span>
+              </SelectorButton>
+              <SelectorButton selected={rateMode === 'EXPECTED_2026'} onClick={() => handleRateMode('EXPECTED_2026')}>
+                <span className="text-center leading-snug">
+                  <span className="block text-[12px] font-bold">2026</span>
+                  <span className={`block text-[11px] ${expected2026Rate < 0 ? 'text-[#FF3B30]' : 'text-[#8E8E93]'}`}>{formatRateDisplay(expected2026Rate)}</span>
                 </span>
               </SelectorButton>
               <SelectorButton selected={rateMode === 'MANUAL'} onClick={() => handleRateMode('MANUAL')}>
@@ -217,8 +226,14 @@ export default function CalculatorSection({ sectionRef, onSaved, preload, select
             </div>
 
             <p className="text-[12px] text-[#8E8E93] mt-1.5 leading-relaxed">
-              MIN: estimación conservadora · AVG: promedio últimos 10 años · MAX: mejor año histórico.
+              MIN: estimación conservadora · AVG: promedio últimos 10 años · MAX: mejor año histórico · 2026: proyección de analistas para el año fiscal 2026.
             </p>
+
+            {ratePresetNegativa && (
+              <p className="text-[12px] text-[#FF3B30] mt-1.5 leading-relaxed">
+                Con un retorno negativo no es posible calcular un aporte mensual para alcanzar tu objetivo: la inversión perdería valor cada mes. Esto es lo que pasa con activos que tuvieron décadas malas. Probá con la proyección 2026 o un valor manual.
+              </p>
+            )}
 
             {rateMode === 'MANUAL' && (
               <div className="mt-2">
