@@ -16,7 +16,7 @@ export default function AmountInput({ value, onChange }) {
       onClick={() => inputRef.current?.focus()}
       className={`flex items-center justify-center border-2 rounded-2xl py-3.5 px-5
         cursor-text transition-colors duration-150
-        ${isFocused || value > 0 ? 'border-[#00D632]' : 'border-[#D1D1D1]'}`}
+        ${isFocused || value > 0 ? 'border-[#00D632]' : 'border-[#D1D1D6]'}`}
     >
       <input
         ref={inputRef}

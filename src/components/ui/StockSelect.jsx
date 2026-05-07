@@ -28,7 +28,7 @@ export default function StockSelect({ value, onValueChange }) {
     <Select.Root value={value} onValueChange={onValueChange}>
       <Select.Trigger
         aria-label={`Activo: ${asset.name}`}
-        className="w-full flex items-center gap-3 border border-[#D1D1D1] rounded-[12px]
+        className="w-full flex items-center gap-3 border border-[#D1D1D6] rounded-[12px]
           px-4 py-3 bg-white hover:border-black focus:border-[#00D632] focus:outline-none
           transition-colors cursor-pointer"
       >

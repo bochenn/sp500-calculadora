@@ -24,8 +24,7 @@ Inspirado en Cash.app: light mode minimalista, números como héroes visuales, m
 | `#8E8E93` | Texto secundario, labels, íconos inactivos, valores de tasa en botones | 49x — **valor canónico** |
 | `#F5F5F5` | Fondo hero, fondo cards footer, fondo metric boxes en calculadora | 11x |
 | `#E5E5E5` | Dividers ligeros, borders de hero tabs inactivos | 6x |
-| `#D1D1D6` | Border de SelectorButton inactivo | 2x |
-| `#D1D1D1` | Border de AmountInput y StockSelect inactivo | 2x |
+| `#D1D1D6` | Border de inputs y SelectorButton inactivos | 4x |
 | `#C7C7CC` | Placeholder text, íconos de tooltip inactivos | 6x |
 | `#F0F0F0` | Borders de tabla, borde de tabla container | 4x |
 | `#F2F2F7` | Dividers internos de modal (más sutil que E5E5E5) | 4x |
@@ -34,7 +33,7 @@ Inspirado en Cash.app: light mode minimalista, números como héroes visuales, m
 | `#ABABAB` | Hover de border en carousel tabs | 1x |
 | `#E8E8E8` | Puntos del dot-grid de fondo del chart | 1x |
 
-> **Inconsistencia documentada:** el color `#6B7280` (Tailwind gray-500) aparece en `StockCarousel.jsx` y `Footer.jsx` para el subtítulo del hero, mientras que el resto del sistema usa `#8E8E93` (iOS System Gray) para texto secundario. Visualmente similares, pero deberían unificarse en `#8E8E93`. También existe `#D1D1D1` vs `#D1D1D6` para borders inactivos — misma función, dos valores. En una iteración futura conviene unificar en `#D1D1D6`.
+> **Inconsistencia documentada:** el color `#6B7280` (Tailwind gray-500) aparece en `StockCarousel.jsx` y `Footer.jsx` para el subtítulo del hero, mientras que el resto del sistema usa `#8E8E93` (iOS System Gray) para texto secundario. Visualmente similares, pero deberían unificarse en `#8E8E93`.
 
 ### Estados
 
@@ -167,7 +166,7 @@ transition: transition-colors
 #### AmountInput (monto objetivo)
 ```
 border-2 rounded-2xl py-3.5 px-5
-default:  border-[#D1D1D1]
+default:  border-[#D1D1D6]
 active/filled: border-[#00D632]
 transition: duration-150
 Texto interno: text-[42px] font-bold tabular-nums text-center
@@ -183,7 +182,7 @@ Texto interno: text-[16px] font-semibold
 
 #### StockSelect trigger (Radix)
 ```
-border border-[#D1D1D1] rounded-[12px] px-4 py-3 bg-white
+border border-[#D1D1D6] rounded-[12px] px-4 py-3 bg-white
 hover: border-black
 focus: border-[#00D632] outline-none
 transition: transition-colors
@@ -338,6 +337,17 @@ Definidas en `tailwind.config.js`:
 - **Íconos de marcas:** en color del activo (`asset.color`) cuando están dentro del carousel/tabla. En blanco o negro cuando están sobre fondo oscuro.
 - **Logo Cash App:** siempre en negro via `filter: brightness(0)` (`brightness-0`).
 - Sin emojis decorativos en la UI.
+
+## Layering (z-index)
+
+| Layer | z-index | Componentes |
+|---|---|---|
+| Base | 0 | Contenido normal |
+| Sticky | 10 | Elementos sticky (futuro) |
+| Dropdown | 50 | StockSelect open |
+| Tooltip | 60 | InfoTooltip, footer tooltips |
+| Modal overlay | 100 | Modal background |
+| Modal content | 110 | Modal foreground |
 
 ---
 
