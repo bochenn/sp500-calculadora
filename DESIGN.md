@@ -1,5 +1,10 @@
 # DESIGN.md — Sistema de diseño
 
+**Versión:** 1.0 — generado a partir del código existente  
+**Última actualización:** Mayo 2026
+
+---
+
 ## Filosofía visual
 
 Inspirado en Cash.app: light mode minimalista, números como héroes visuales, mucho espacio negativo. Sin gradientes decorativos, sin sombras pesadas, sin emojis en la UI. Los colores de la paleta son funcionales (verde = ganancia, rojo = error/pérdida), no decorativos. La tipografía hace el trabajo.
@@ -348,6 +353,22 @@ Definidas en `tailwind.config.js`:
 | Tooltip | 60 | InfoTooltip, footer tooltips |
 | Modal overlay | 100 | Modal background |
 | Modal content | 110 | Modal foreground |
+
+---
+
+## Focus visible
+
+Actualmente no hay estilos de `focus-visible` personalizados. Tailwind aplica su outline por defecto en algunos navegadores, pero no está unificado. Los botones `<button>` y los `<input>` usan el outline nativo del navegador al navegar por teclado.
+
+> **Nota pendiente:** para una versión accesible completa, definir un estilo `focus-visible:outline-2 focus-visible:outline-[#00D632]` consistente en todos los elementos interactivos y suprimir el outline en clicks (`focus:outline-none` + `focus-visible:outline`).
+
+---
+
+## Empty states
+
+La tabla de cálculos previos (`CalculationsTable.jsx`) se oculta completamente cuando no hay cálculos guardados — `if (!calculations.length) return null`. No hay mensaje de estado vacío ni ilustración placeholder.
+
+La calculadora principal siempre está visible, por lo que el estado vacío de la tabla no interrumpe el flujo.
 
 ---
 
