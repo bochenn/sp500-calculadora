@@ -13,13 +13,17 @@ export default function StockCarousel({ selectedStockKey, onStockChange, onScrol
     return (
       <button
         key={key}
-        onClick={() => onStockChange(key)}
+        onClick={(e) => {
+          onStockChange(key)
+          e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+        }}
         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-semibold
           shrink-0 transition-colors border-2
           ${selected
             ? 'bg-black text-white border-black'
             : 'bg-white text-[#555] border-[#E5E5E5] hover:border-[#ABABAB]'
           }`}
+        style={{ scrollSnapAlign: 'center' }}
       >
         {Icon && <Icon size={12} />}
         {a.ticker}
@@ -60,12 +64,25 @@ export default function StockCarousel({ selectedStockKey, onStockChange, onScrol
           </div>
         </div>
 
-        {/* Selector de activos — scroll horizontal en todos los tamaños */}
-        <div
-          className="flex overflow-x-auto gap-2 mt-10 pb-1"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          <div className="flex gap-2 flex-nowrap mx-auto">
+        {/* Selector de activos — fila única con scroll horizontal */}
+        <div className="relative mt-10">
+          {/* Fade izquierdo */}
+          <div className="absolute left-0 top-0 h-full w-12 pointer-events-none z-10"
+            style={{ background: 'linear-gradient(to right, #F5F5F5, transparent)' }} />
+          {/* Fade derecho */}
+          <div className="absolute right-0 top-0 h-full w-12 pointer-events-none z-10"
+            style={{ background: 'linear-gradient(to left, #F5F5F5, transparent)' }} />
+
+          <div
+            className="flex gap-2 overflow-x-auto py-1 px-1"
+            style={{
+              flexWrap: 'nowrap',
+              scrollSnapType: 'x mandatory',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
             {tabs}
           </div>
         </div>
