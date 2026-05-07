@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { formatearUSD, formatPercentage } from '../utils/finance.js'
 import { deleteCalculation } from '../utils/storage.js'
 import { ASSETS } from '../data/assets.js'
-import { STOCK_ICONS } from '../utils/stockIcons.js'
+import { STOCK_ICONS } from '../utils/stockIcons.jsx'
 import CalcDetailModal from './CalcDetailModal.jsx'
 
 // ── Helpers ──────────────────────────────────────────────────────────────────

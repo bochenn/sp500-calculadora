@@ -1,6 +1,6 @@
 import logo from '../assets/RGB_CashApp_Symbol_Green.svg'
 import { ASSETS } from '../data/assets.js'
-import { STOCK_ICONS } from '../utils/stockIcons.js'
+import { STOCK_ICONS } from '../utils/stockIcons.jsx'
 import PerformanceChart from './PerformanceChart.jsx'
 import Button from './ui/Button.jsx'
 

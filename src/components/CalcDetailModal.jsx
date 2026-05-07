@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { formatearUSD } from '../utils/finance.js'
 import { ASSETS } from '../data/assets.js'
-import { STOCK_ICONS } from '../utils/stockIcons.js'
+import { STOCK_ICONS } from '../utils/stockIcons.jsx'
 import Button from './ui/Button.jsx'
 
 // ── Helpers ──────────────────────────────────────────────────────────────────

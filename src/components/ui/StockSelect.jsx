@@ -1,6 +1,6 @@
 import * as Select from '@radix-ui/react-select'
 import { ASSETS } from '../../data/assets.js'
-import { STOCK_ICONS } from '../../utils/stockIcons.js'
+import { STOCK_ICONS } from '../../utils/stockIcons.jsx'
 
 function ChevronDown() {
   return (
