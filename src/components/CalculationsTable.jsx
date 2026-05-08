@@ -90,16 +90,7 @@ export default function CalculationsTable({ calculations, onDelete, onLoadInCalc
             exactamente su porcentaje, headers y celdas alineados siempre.
           */}
           <table className="w-full table-fixed">
-            <colgroup>
-              <col style={{ width: '22%' }} />  {/* ACTIVO */}
-              <col style={{ width: '14%' }} />  {/* OBJETIVO */}
-              <col style={{ width: '8%' }} />   {/* PLAZO */}
-              <col style={{ width: '10%' }} />  {/* TASA */}
-              <col style={{ width: '12%' }} />  {/* APORTE MENSUAL */}
-              <col style={{ width: '13%' }} />  {/* RETORNO $ */}
-              <col style={{ width: '13%' }} />  {/* RETORNO % */}
-              <col style={{ width: '8%' }} />   {/* ACCIONES */}
-            </colgroup>
+            <colgroup><col style={{ width: '22%' }} /><col style={{ width: '14%' }} /><col style={{ width: '8%' }} /><col style={{ width: '10%' }} /><col style={{ width: '12%' }} /><col style={{ width: '13%' }} /><col style={{ width: '13%' }} /><col style={{ width: '8%' }} /></colgroup>
             <thead className="bg-white">
               <tr>
                 <th className={`${thBase} text-left pl-4`}>Activo</th>

@@ -11,6 +11,16 @@ Inspirado en Cash.app: light mode minimalista, números como héroes visuales, m
 
 ---
 
+## Identidad visual
+
+Esta app tiene una única identidad: **Cash.app inspired**. Verde Cash (`#00D632`), tipografía Inter, layout minimalista, espacios generosos.
+
+**Decisión de producto:** no se diseña como sistema multi-tema. Los tokens están optimizados para esta identidad específica, no para escalar a N temas. Si en el futuro se quiere agregar otra identidad, hay que rediseñar el sistema desde cero, no parchearlo.
+
+**Razonamiento:** una identidad clara > múltiples identidades dispersas. El theme switcher era una feature decorativa con costo de mantenimiento desproporcionado al valor.
+
+---
+
 ## Paleta de colores
 
 ### Primarios
