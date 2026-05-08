@@ -57,8 +57,8 @@ export default function StockCarousel({ selectedStockKey, onStockChange, onScrol
 
         {/* Zona central: chart — ocupa el espacio disponible */}
         <div
-          className="flex-1 min-h-0"
-          style={{ minHeight: '200px', maxHeight: '360px' }}
+          className="w-full"
+          style={{ height: '280px' }}
         >
           <PerformanceChart
             returns={asset.returns}

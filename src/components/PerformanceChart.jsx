@@ -21,7 +21,7 @@ export default function PerformanceChart({ returns, color = '#00D632', name = 'S
   const investYear = returns[0].year
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="w-full h-full flex flex-col">
       <div className="text-center mb-4">
         <p className="text-[16px] font-semibold text-black">
           $1 invertido en {investYear} valdría ${finalValue.toFixed(2)} hoy
@@ -32,7 +32,7 @@ export default function PerformanceChart({ returns, color = '#00D632', name = 'S
       </div>
 
       <div
-        className="flex-1 min-h-0 rounded-2xl overflow-hidden"
+        className="flex-1 w-full rounded-2xl overflow-hidden"
         style={{
           backgroundImage: 'radial-gradient(circle, #E8E8E8 1px, transparent 1px)',
           backgroundSize: '20px 20px',
